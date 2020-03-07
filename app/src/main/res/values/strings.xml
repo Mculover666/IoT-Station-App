@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="serverip">122.51.89.94</string>
+    <string name="serverport">1883</string>
+    <string name="username">mculover666</string>
+    <string name="passwd">123456</string>
+    <string name="clientid">client-0002</string>
+</resources>
