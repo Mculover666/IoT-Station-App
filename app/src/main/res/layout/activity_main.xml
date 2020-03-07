@@ -173,7 +173,13 @@
             android:textSize="20sp"
             android:text="定时"
             />
-
+        //最底部定时按钮
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="退出登录"
+            />
 
     </LinearLayout>
 
