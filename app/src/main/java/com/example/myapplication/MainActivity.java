@@ -2,9 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,11 +19,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //测试日志信息打印
-        Log.v(TAG,"This is a verbose log!");
-        Log.d(TAG,"This is a Debug log!");
-        Log.i(TAG,"This is a Info log!");
-        Log.w(TAG,"This is a Warning log!");
-        Log.e(TAG,"This is a Error log!");
+        Button login_button = (Button)findViewById(R.id.button_exit);
+
+        login_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "退出成功",Toast.LENGTH_SHORT).show();
+
+                //构造一个Intent
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                //启动下一个活动
+                startActivity(intent);
+            }
+        });
     }
 }

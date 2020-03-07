@@ -41,11 +41,12 @@
 
             </ImageView>
                 <TextView
+                    android:id="@+id/temp_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="25sp"
-                    android:text="test1">
+                    android:text="25.2℃">
                 </TextView>
 
             </LinearLayout>
@@ -63,11 +64,12 @@
                     android:layout_gravity="center"
                     />
                 <TextView
+                    android:id="@+id/humi_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="25sp"
-                    android:text="test1">
+                    android:text="33 %RPH">
                 </TextView>
             </LinearLayout>
 
@@ -96,11 +98,12 @@
 
                 </ImageView>
                 <TextView
+                    android:id="@+id/lightness_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="25sp"
-                    android:text="test1">
+                    android:text="123 Lux">
                 </TextView>
 
             </LinearLayout>
@@ -118,11 +121,12 @@
 
                 </ImageView>
                 <TextView
+                    android:id="@+id/gas_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="25sp"
-                    android:text="test1">
+                    android:text="5 %">
                 </TextView>
 
             </LinearLayout>
@@ -149,6 +153,7 @@
             android:layout_weight="1"
             />
             <TextView
+                android:id="@+id/time_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2020-03-07 17:40:00"
@@ -168,6 +173,7 @@
 
         //最底部定时按钮
         <Button
+            android:id="@+id/button_timer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -175,6 +181,7 @@
             />
         //最底部定时按钮
         <Button
+            android:id="@+id/button_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
