@@ -128,7 +128,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="10"
+                        android:text="50"
                         android:id="@+id/max_humi_edittext"
                         />
                     <Button
@@ -151,7 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="40"
+                        android:text="10"
                         android:id="@+id/min_hump_edittext"
                         />
                     <Button
