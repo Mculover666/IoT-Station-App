@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="120dp"
             android:layout_margin="10dp"
             android:src="@drawable/pic_001"
             />
@@ -45,10 +45,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="25sp"
-                    android:text="25.2℃">
+                    android:textSize="20sp"
+                    android:text="0 ℃">
                 </TextView>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过高阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="30"
+                        android:id="@+id/max_temp_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/max_temp_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过低阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="20"
+                        android:id="@+id/min_temp_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/min_temp_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
             </LinearLayout>
             //1x2湿度
             <LinearLayout
@@ -68,18 +113,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="25sp"
-                    android:text="33 %RPH">
+                    android:textSize="20sp"
+                    android:text="0 %RPH">
                 </TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过高阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="10"
+                        android:id="@+id/max_humi_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/max_humi_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过低阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="40"
+                        android:id="@+id/min_hump_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/min_hump_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp"
-            />
+
 
         //第二栏信息
         <LinearLayout
@@ -102,9 +188,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="25sp"
-                    android:text="123 Lux">
+                    android:textSize="20sp"
+                    android:text="0 Lux">
                 </TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过高阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1000"
+                        android:id="@+id/max_lux_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/max_lux_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过低阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="100"
+                        android:id="@+id/min_lux_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/min_lux_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -125,20 +257,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="25sp"
-                    android:text="5 %">
+                    android:textSize="20sp"
+                    android:text="0 %">
                 </TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过高阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="50"
+                        android:id="@+id/max_gas_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/max_gas_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="过低阈值:"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:id="@+id/min_gas_edittext"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/min_gas_button"
+                        android:layout_weight="1"
+                        android:textSize="12sp"
+                        android:text="设置"/>
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp"
-            />
 
         //定时信息显示
         <LinearLayout
@@ -164,13 +335,6 @@
             
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp"
-            />
-
         //最底部定时按钮
         <Button
             android:id="@+id/button_timer"
@@ -178,14 +342,6 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="定时"
-            />
-        //最底部定时按钮
-        <Button
-            android:id="@+id/button_exit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="退出登录"
             />
 
     </LinearLayout>
