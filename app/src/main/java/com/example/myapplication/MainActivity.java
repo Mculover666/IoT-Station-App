@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -26,6 +29,9 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -72,23 +78,20 @@ public class MainActivity extends AppCompatActivity {
     private EditText max_gas_edittext;
     private EditText min_gas_edittext;
 
+    private TextView txtDate;
+    private TextView txtTime;
+    private Button btnDate;
+    private Button btnTime;
+    DateFormat format= DateFormat.getDateTimeInstance();
+    Calendar calendar= Calendar.getInstance(Locale.CHINA);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Button login_button = (Button)findViewById(R.id.button_exit);
-//
-//        login_button.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//
-//                Toast.makeText(MainActivity.this, "成功",Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-
         //寻找控件
+        txtTime = findViewById(R.id.time_textview);
         temp_text_view = findViewById(R.id.temp_textview);
         humi_text_view = findViewById(R.id.humi_textview);
         lightness_text_view = findViewById(R.id.lightness_textview);
@@ -112,6 +115,17 @@ public class MainActivity extends AppCompatActivity {
         max_gas_edittext = findViewById(R.id.max_gas_edittext);
         min_gas_edittext = findViewById(R.id.min_gas_edittext);
 
+        Button login_button = (Button)findViewById(R.id.button_timer);
+
+        login_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                showTimePickerDialog(MainActivity.this,  4, txtTime, calendar);
+                //Toast.makeText(MainActivity.this, "成功",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         Mqtt_init();
         startReconnect();
 
@@ -122,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String max_temp_str = max_temp_edittext.getText().toString();
                     int max_temp_value = Integer.valueOf(max_temp_str);
-                    String max_temp_json = "{\"max_temp\":\""+String.valueOf(max_temp_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("max_temp",max_temp_json);
+                    String max_temp_json = "{\"name\":\"max_temp\",\"max_temp\":"+String.valueOf(max_temp_value)+"}";          //{"name":"max_temp","max_temp":"23"}
+                    publishmessageplus("sub_test",max_temp_json);
                     Toast.makeText(MainActivity.this, max_temp_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -140,8 +154,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String min_temp_str = min_temp_edittext.getText().toString();
                     int min_temp_value = Integer.valueOf(min_temp_str);
-                    String min_temp_json = "{\"min_temp\":\""+String.valueOf(min_temp_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("min_temp",min_temp_json);
+                    String min_temp_json = "{\"name\":\"min_temp\",\"min_temp\":"+String.valueOf(min_temp_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",min_temp_json);
                     Toast.makeText(MainActivity.this, min_temp_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -158,8 +172,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String max_humi_str = max_humi_edittext.getText().toString();
                     int max_humi_value = Integer.valueOf(max_humi_str);
-                    String max_humi_json = "{\"max_humi\":\""+String.valueOf(max_humi_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("max_humi",max_humi_json);
+                    String max_humi_json = "{\"name\":\"max_humi\",\"max_humi\":"+String.valueOf(max_humi_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",max_humi_json);
                     Toast.makeText(MainActivity.this, max_humi_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -176,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String min_humi_str = min_humi_edittext.getText().toString();
                     int min_humi_value = Integer.valueOf(min_humi_str);
-                    String min_humi_json = "{\"min_humi\":\""+String.valueOf(min_humi_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("min_humi",min_humi_json);
+                    String min_humi_json = "{\"name\":\"min_humi\",\"min_humi\":"+String.valueOf(min_humi_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",min_humi_json);
                     Toast.makeText(MainActivity.this, min_humi_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -194,8 +208,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String max_lux_str = max_light_edittext.getText().toString();
                     int max_lux_value = Integer.valueOf(max_lux_str);
-                    String max_lux_json = "{\"max_lux\":\""+String.valueOf(max_lux_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("max_lux",max_lux_json);
+                    String max_lux_json = "{\"name\":\"max_lux\",\"max_lux\":"+String.valueOf(max_lux_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",max_lux_json);
                     Toast.makeText(MainActivity.this, max_lux_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -212,8 +226,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String min_lux_str = min_light_edittext.getText().toString();
                     int min_lux_value = Integer.valueOf(min_lux_str);
-                    String min_lux_json = "{\"min_lux\":\""+String.valueOf(min_lux_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("min_lux",min_lux_json);
+                    String min_lux_json = "{\"name\":\"min_lux\",\"min_lux\":"+String.valueOf(min_lux_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",min_lux_json);
                     Toast.makeText(MainActivity.this, min_lux_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -230,8 +244,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String max_gas_str = max_gas_edittext.getText().toString();
                     int max_gas_value = Integer.valueOf(max_gas_str);
-                    String max_gas_json = "{\"max_gas\":\""+String.valueOf(max_gas_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("max_gas",max_gas_json);
+                    String max_gas_json = "{\"name\":\"max_gas\",\"max_gas\":"+String.valueOf(max_gas_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",max_gas_json);
                     Toast.makeText(MainActivity.this, max_gas_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -248,8 +262,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     String min_gas_str = min_gas_edittext.getText().toString();
                     int min_gas_value = Integer.valueOf(min_gas_str);
-                    String min_gas_json = "{\"min_gas\":\""+String.valueOf(min_gas_value)+"\"}";          //{"max_temp":"23"}
-                    publishmessageplus("min_gas",min_gas_json);
+                    String min_gas_json = "{\"name\":\"min_gas\",\"min_gas\":"+String.valueOf(min_gas_value)+"}";          //{"max_temp":"23"}
+                    publishmessageplus("sub_test",min_gas_json);
                     Toast.makeText(MainActivity.this, min_gas_json,Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
@@ -339,6 +353,42 @@ public class MainActivity extends AppCompatActivity {
             return manager.getDeviceId();
         }
         return "";
+    }
+
+    /**
+     * 时间选择
+     * @param activity
+     * @param themeResId
+     * @param tv
+     * @param calendar
+     */
+    public void showTimePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+        // Calendar c = Calendar.getInstance();
+        // 创建一个TimePickerDialog实例，并把它显示出来
+        // 解释一哈，Activity是context的子类
+        new TimePickerDialog( activity,themeResId,
+                // 绑定监听器
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        tv.setText(hourOfDay + ":" + minute);
+                        try{
+                            String time_json = "{\"name\":\"alarm\",\"hour\":"+String.valueOf(hourOfDay)+",\"min\":"+String.valueOf(minute)+"}";          //{"max_temp":"23"}
+                            publishmessageplus("sub_test",time_json);
+                            Toast.makeText(MainActivity.this, "定时成功",Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e) {
+                            Toast.makeText(MainActivity.this, "定时失败",Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                }
+                // 设置初始时间
+                , calendar.get(Calendar.HOUR_OF_DAY)
+                , calendar.get(Calendar.MINUTE)
+                // true表示采用24小时制
+                ,true).show();
     }
 
     //Mqtt初始化函数
