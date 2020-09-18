@@ -12,10 +12,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="嵌入式环境时钟"
-        android:textSize="36sp"
         android:gravity="center"
-        />
+        android:text="智能家居小助手"
+        android:textSize="36sp"
+        android:textColor="@color/colorText"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="通信工程2017级安卓课程设计作品"
+        android:textSize="18sp"
+        android:textColor="@color/colorText"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -23,76 +32,45 @@
         android:text=""
         android:textSize="36sp"
         android:gravity="center"
+        android:textColor="@color/colorText"
         />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/serverip_textView"
-            android:text="服务器ip:"
-            android:gravity="left"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/serverip_edittext"
-            android:text="@string/serverip"
-            android:maxLines="1"
-            />
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/serverport_textView"
-            android:text="服务器端口:"
-            android:gravity="left"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/serverport_edittext"
-            android:text="@string/serverport"
-            android:maxLines="1"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/username_textView"
-            android:text="用户名:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="left"
+            android:text="账号:"
             android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            />
+            android:textColor="@color/colorText"/>
+
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/username_edittext"
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
             android:text="@string/username"
-            android:maxLines="1"
-            />
+            android:textColor="@color/colorText"/>
+
+        <Space
+            android:layout_width="83dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -100,23 +78,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/passwd_textView"
-            android:text="密码:"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="密码:"
+            android:textSize="24sp"
+            android:textColor="@color/colorText"/>
+
+        <EditText
             android:id="@+id/passwd_edittext"
-            android:text="@string/passwd"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:maxLines="1"
-            android:inputType="textPassword" />
-            />
+            android:text="@string/passwd"
+            android:textColor="@color/colorText"/>
+
+        <Space
+            android:layout_width="82dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        />
     </LinearLayout>
 
     <LinearLayout
@@ -124,29 +112,42 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/clientid_textView"
-            android:text="客户端id:"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/clientid_edittext"
-            android:text="@string/clientid"
-            android:maxLines="1"
-            />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_login"
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="登录" />
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="179dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button_login"
+            style="@android:style/Widget.DeviceDefault.Button"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:text="登录"
+            android:textColor="@color/colorText"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="179dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50pt"
+        android:layout_weight="1" />
 
 </LinearLayout>

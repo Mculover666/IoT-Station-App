@@ -14,12 +14,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/pic_001"
-            />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="163dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/pic_001" />
         </LinearLayout>
 
         //第一栏信息
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="20sp"
-                    android:text="0 Lux">
+                    android:text="0.000 mg/m3">
                 </TextView>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -203,7 +203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="1000"
+                        android:text="0.800"
                         android:id="@+id/max_lux_edittext"
                         />
                     <Button
@@ -226,7 +226,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="100"
+                        android:text="0.000"
                         android:id="@+id/min_lux_edittext"
                         />
                     <Button
@@ -258,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="20sp"
-                    android:text="0 %">
+                    android:text="0 ug/m3">
                 </TextView>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -272,7 +272,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="50"
+                        android:text="5"
                         android:id="@+id/max_gas_edittext"
                         />
                     <Button
@@ -327,7 +327,7 @@
                 android:id="@+id/time_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2020-03-07 17:40:00"
+                android:text="2020-09-17 17:40:00"
                 android:textSize="15sp"
                 android:gravity="center"
                 android:layout_weight="1"
